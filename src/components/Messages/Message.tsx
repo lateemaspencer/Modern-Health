@@ -9,6 +9,28 @@ export interface IMessage {
 }
 
 const Message: React.FC<IMessage> = ({ senderUuid, sentAt, index, deleteMessage }) => {
+    const  formatTime = () => {
+        // change string to date object
+        const date = new Date(sentAt)
+
+        // provide options to formate date string
+        var options = {
+            weekday: 'long',
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric'
+        };
+
+        // build final resultDate string
+        var _resultDate = new Intl.DateTimeFormat('en-US', options).format(date);
+
+        // return resultDate string
+        return (_resultDate);
+    }
+
     return (
         <Card {...index}>
             <Card.Content>
@@ -19,7 +41,7 @@ const Message: React.FC<IMessage> = ({ senderUuid, sentAt, index, deleteMessage 
                     {senderUuid}
                 </Card.Description>
                 <Card.Header>
-                    SentAt
+                    {formatTime()}
                 </Card.Header>
                 <Card.Description>
                     {sentAt}

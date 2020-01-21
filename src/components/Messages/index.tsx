@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Pagination, PaginationProps } from 'semantic-ui-react';
+import { Card, Pagination } from 'semantic-ui-react';
 
 import Message from './Message';
 // This is the list of messages.
@@ -90,7 +90,9 @@ const Messages: React.FC<{}> = () => {
         }
     }
 
-    const onChangeActivePage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, { activePage: number }: PaginationProps) => {
+    const onChangeActivePage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, pageInfo: any) => {
+
+        const { activePage } = pageInfo
         setActivePage(activePage);
     };
 
